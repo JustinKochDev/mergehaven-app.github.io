@@ -4,71 +4,258 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mergehaven - Support</title>
+    <link rel="icon" type="image/png" href="appicon.png">
     <style>
+        :root {
+            --green-dark: #0d1f12;
+            --green-mid: #1a3a1f;
+            --green-accent: #2d6e3f;
+            --gold: #d4a843;
+            --gold-light: #f0d078;
+            --cream: #f5f0e8;
+            --text-primary: #f0ead6;
+            --text-secondary: #b8c4a8;
+            --card-bg: rgba(255,255,255,0.06);
+            --card-border: rgba(255,255,255,0.08);
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.7; color: #333; background: #fafafa; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
-        .hero { text-align: center; margin-bottom: 48px; }
-        .hero h1 { font-size: 2.2em; margin-bottom: 8px; color: #1a1a1a; }
-        .hero p { color: #666; font-size: 1.1em; }
-        h2 { font-size: 1.3em; margin-top: 32px; margin-bottom: 12px; color: #1a1a1a; }
-        p { margin-bottom: 16px; }
-        .faq-item { background: #fff; border: 1px solid #e8e8e8; border-radius: 12px; padding: 20px 24px; margin-bottom: 16px; }
-        .faq-item h3 { font-size: 1.05em; margin-bottom: 8px; color: #1a1a1a; }
-        .faq-item p { margin-bottom: 0; color: #555; }
-        .contact-box { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; padding: 32px; text-align: center; margin-top: 40px; color: #fff; }
-        .contact-box h2 { color: #fff; margin-top: 0; }
-        .contact-box p { color: rgba(255,255,255,0.9); }
-        .contact-box a { color: #fff; font-weight: 600; text-decoration: underline; }
-        a { color: #007AFF; }
-        .footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e0e0e0; color: #888; font-size: 0.85em; text-align: center; }
-        .footer a { color: #888; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: var(--green-dark);
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 20%, rgba(45,110,63,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(212,168,67,0.08) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 1;
+        }
+        nav {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+        .nav-brand img { width: 40px; height: 40px; border-radius: 10px; }
+        .nav-brand span { font-size: 1.25em; font-weight: 700; letter-spacing: -0.02em; }
+        .nav-links { display: flex; gap: 28px; list-style: none; }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.92em;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--gold-light); }
+
+        .hero {
+            text-align: center;
+            padding: 60px 0 48px;
+        }
+        .hero h1 {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+        }
+        h2 {
+            font-size: 1.2em;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            font-weight: 600;
+        }
+        .faq-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin-bottom: 14px;
+            transition: background 0.2s;
+        }
+        .faq-item:hover {
+            background: rgba(255,255,255,0.09);
+        }
+        .faq-item h3 {
+            font-size: 1.02em;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--cream);
+        }
+        .faq-item p {
+            font-size: 0.92em;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .contact-box {
+            background: linear-gradient(135deg, rgba(45,110,63,0.3) 0%, rgba(212,168,67,0.15) 100%);
+            border: 1px solid rgba(212,168,67,0.2);
+            border-radius: 18px;
+            padding: 36px;
+            text-align: center;
+            margin-top: 48px;
+        }
+        .contact-box h2 {
+            color: var(--cream);
+            margin-top: 0;
+            text-transform: none;
+            letter-spacing: -0.01em;
+            font-size: 1.4em;
+        }
+        .contact-box p {
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .contact-box a {
+            color: var(--gold-light);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .contact-box a:hover { text-decoration: underline; }
+        footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--card-border);
+            margin-top: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-left { font-size: 0.85em; color: rgba(184,196,168,0.5); }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.88em;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: var(--gold-light); }
+        @media (max-width: 600px) {
+            footer { flex-direction: column; text-align: center; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="hero">
-            <h1>Mergehaven Support</h1>
-            <p>We're here to help you enjoy the game</p>
-        </div>
-        <h2>Frequently Asked Questions</h2>
-        <div class="faq-item">
-            <h3>How do I merge items?</h3>
-            <p>Drag and drop two identical items on the board to combine them into a higher-tier item. You can also tap a source to spawn new items when you have enough energy.</p>
-        </div>
-        <div class="faq-item">
-            <h3>How does energy work?</h3>
-            <p>Energy is used to spawn new items from sources. It regenerates automatically over time (1 energy every 3 minutes). You can also watch a rewarded video ad for bonus energy, purchase an Energy Refill from the shop, or subscribe to VIP Pass for faster regeneration and a higher energy cap.</p>
-        </div>
-        <div class="faq-item">
-            <h3>What is the VIP Pass?</h3>
-            <p>The VIP Pass is a monthly subscription ($4.99/month) that gives you faster energy regeneration, a higher energy cap, ad-free gameplay, and bonus rewards. You can subscribe or cancel anytime through your Apple ID settings.</p>
-        </div>
-        <div class="faq-item">
-            <h3>How do I restore my purchases?</h3>
-            <p>Open the Shop in the game and tap "Restore Purchases" at the bottom. This will restore your VIP Pass subscription status. Note that consumable purchases (gems, energy refills) cannot be restored as they are consumed immediately.</p>
-        </div>
-        <div class="faq-item">
-            <h3>How do I cancel my subscription?</h3>
-            <p>Open Settings on your iPhone, tap your name at the top, then tap Subscriptions. Find Mergehaven and tap Cancel Subscription. Your VIP benefits will continue until the end of your current billing period.</p>
-        </div>
-        <div class="faq-item">
-            <h3>My game progress was lost. Can I recover it?</h3>
-            <p>Game progress is saved locally on your device. If you've deleted and reinstalled the app, progress may be lost. We recommend keeping regular iCloud backups of your device to protect your save data.</p>
-        </div>
-        <div class="faq-item">
-            <h3>I'm having trouble with an in-app purchase.</h3>
-            <p>If a purchase didn't go through or you were charged but didn't receive your items, try restarting the app first. If the issue persists, contact us at the email below with your approximate purchase date and we'll help resolve it. For refund requests, please contact Apple Support directly.</p>
-        </div>
-        <div class="contact-box">
-            <h2>Still need help?</h2>
-            <p>We'd love to hear from you. Send us an email and we'll get back to you as soon as possible.</p>
-            <p><a href="mailto:naqzar@gmail.com">naqzar@gmail.com</a></p>
-        </div>
-        <div class="footer">
-            <p>&copy; 2026 Justin Koch. All rights reserved.</p>
-            <p><a href="privacy-policy.html">Privacy Policy</a></p>
-        </div>
+
+<nav>
+    <a href="index.html" class="nav-brand">
+        <img src="appicon.png" alt="Mergehaven icon">
+        <span>Mergehaven</span>
+    </a>
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="privacy-policy.html">Privacy</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="hero">
+        <h1>Support</h1>
+        <p>We're here to help you enjoy the game</p>
     </div>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+        <h3>How do I merge items?</h3>
+        <p>Drag and drop two identical items on the board to combine them into a higher-tier item. You can also tap a source to spawn new items when you have enough energy. There are 5 item types (Flowers, Tools, Stones, Gems, and Discoveries), each with 8+ tiers to collect.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>How does energy work?</h3>
+        <p>Energy is used to spawn new items from sources. It regenerates automatically over time (1 energy every 3 minutes). You can also watch a rewarded video ad for bonus energy, purchase an Energy Refill from the shop, or subscribe to VIP Pass for 2x faster regeneration and +10 max energy cap.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>What are obstacles and how do I clear them?</h3>
+        <p>Obstacles like weeds, rocks, and fog block spaces on the board. You need to merge tool items to higher tiers and use them to clear obstacles. Higher-tier tools clear tougher obstacles. Clearing obstacles can reveal hidden treasures and earns garden tokens.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>What is the Garden and how do I restore it?</h3>
+        <p>The Garden is your meta-progression system. As you earn garden tokens from chapters and clearing obstacles, you can upgrade zones across 8 garden areas. Each zone has 5 upgrade levels and unlocks mastery bonuses like faster energy regen, coin multipliers, and critical merge chances.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>What is the VIP Pass?</h3>
+        <p>The VIP Pass is a monthly subscription ($4.99/month) that gives you: ad-free gameplay, 2x faster energy regeneration, +10 max energy cap, 20 gems per day, and 500 coins per day. You can subscribe or cancel anytime through your Apple ID settings.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>How do I restore my purchases?</h3>
+        <p>Open the Shop in the game and tap "Restore Purchases" at the bottom. This will restore your VIP Pass subscription status and any non-consumable purchases. Note that consumable purchases (gems, energy refills) cannot be restored as they are consumed immediately.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>How do I cancel my subscription?</h3>
+        <p>Open Settings on your iPhone, tap your name at the top, then tap Subscriptions. Find Mergehaven and tap Cancel Subscription. Your VIP benefits will continue until the end of your current billing period.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>What are Boss Trophies?</h3>
+        <p>Every 10th chapter (Chapter 10, 20, 30, etc.) rewards a boss trophy. These are permanent passive abilities that boost various aspects of gameplay like energy regeneration, XP gains, coin rewards, and more. Collect them all for maximum bonuses.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>Does my progress sync across devices?</h3>
+        <p>Yes! Mergehaven uses iCloud to sync your save data. Make sure you're signed into the same Apple ID and have iCloud enabled for Mergehaven. Your progress will transfer automatically.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>My game progress was lost. Can I recover it?</h3>
+        <p>If you have iCloud sync enabled, try signing out and back into your Apple ID, then relaunching the app. If you've deleted and reinstalled without iCloud sync, progress may be lost. We recommend keeping iCloud sync enabled to protect your save data.</p>
+    </div>
+
+    <div class="faq-item">
+        <h3>I'm having trouble with an in-app purchase.</h3>
+        <p>If a purchase didn't go through or you were charged but didn't receive your items, try restarting the app first. If the issue persists, contact us at the email below with your approximate purchase date and we'll help resolve it. For refund requests, please contact Apple Support directly.</p>
+    </div>
+
+    <div class="contact-box">
+        <h2>Still need help?</h2>
+        <p>We'd love to hear from you. Send us an email and we'll get back to you as soon as possible.</p>
+        <p><a href="mailto:naqzar@gmail.com">naqzar@gmail.com</a></p>
+    </div>
+
+    <footer>
+        <div class="footer-left">&copy; 2026 Justin Koch. All rights reserved.</div>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+    </footer>
+</div>
+
 </body>
 </html>
